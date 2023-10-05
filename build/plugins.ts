@@ -7,6 +7,7 @@ import vue from "@vitejs/plugin-vue";
 import eslintPlugin from "vite-plugin-eslint";
 import viteCompression from "vite-plugin-compression";
 import vueSetupExtend from "unplugin-vue-setup-extend-plus/vite";
+import UnoCSS from "unocss/vite";
 
 export const createVitePlugins = (viteEnv: ViteEnv): (PluginOption | PluginOption[])[] => {
   const { VITE_GLOB_APP_TITLE, VITE_REPORT } = viteEnv;
@@ -30,7 +31,8 @@ export const createVitePlugins = (viteEnv: ViteEnv): (PluginOption | PluginOptio
       symbolId: "icon-[dir]-[name]"
     }),
     // 是否生成包预览，分析依赖包大小做优化处理
-    VITE_REPORT && (visualizer({ filename: "stats.html", gzipSize: true, brotliSize: true }) as PluginOption)
+    VITE_REPORT && (visualizer({ filename: "stats.html", gzipSize: true, brotliSize: true }) as PluginOption),
+    UnoCSS()
   ];
 };
 
