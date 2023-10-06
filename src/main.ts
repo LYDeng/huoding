@@ -14,6 +14,8 @@ import router from "@/routers";
 import pinia from "@/stores";
 // errorHandler
 import errorHandler from "@/utils/errorHandler";
+// unocss
+import "virtual:uno.css";
 
 const app = createApp(App);
 

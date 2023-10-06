@@ -8,6 +8,9 @@ import eslintPlugin from "vite-plugin-eslint";
 import viteCompression from "vite-plugin-compression";
 import vueSetupExtend from "unplugin-vue-setup-extend-plus/vite";
 import UnoCSS from "unocss/vite";
+import AutoImport from "unplugin-auto-import/vite";
+import Components from "unplugin-vue-components/vite";
+import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 
 export const createVitePlugins = (viteEnv: ViteEnv): (PluginOption | PluginOption[])[] => {
   const { VITE_GLOB_APP_TITLE, VITE_REPORT } = viteEnv;
@@ -24,6 +27,12 @@ export const createVitePlugins = (viteEnv: ViteEnv): (PluginOption | PluginOptio
       inject: {
         data: { title: VITE_GLOB_APP_TITLE }
       }
+    }),
+    AutoImport({
+      resolvers: [ElementPlusResolver()]
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()]
     }),
     // 使用 svg 图标
     createSvgIconsPlugin({
